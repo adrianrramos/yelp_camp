@@ -12,6 +12,7 @@ const express          = require('express'),
       campgroundRoutes = require('./routes/campgrounds'),
       commentRoutes    = require('./routes/comment'),
       indexRoutes      = require('./routes/index'),
+      secretMessage    = require('../secretMessage'),
       seedDB           = require('./seeds.js');
 
 mongoose.connect("mongodb://localhost/yelp_camp",
@@ -35,7 +36,7 @@ app.use(flash());
 // PASSPORT CONFIG
 //====================
 app.use(require('express-session')({
-    secret: "Secret secret message",
+    secret: secretMessage,
     resave: false,
     saveUninitialized: false
 }));
